@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#ff2f86">
+<title>LY JING Mart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<header class="topbar">
+  <div class="brand-wrap">
+    <img class="brand-logo" src="assets/logo.png" alt="LY JING MART">
+    <div><div class="brand-name">LY JING MART</div><div class="brand-sub">Your Online Mini Mart</div></div>
+  </div>
+  <button class="cart-top" onclick="openCart()">🛒 <span>Cart</span><b id="cartBadge">0</b></button>
+</header>
+
+<main>
+<section id="home" class="screen active">
+  <div class="hero"><img src="assets/banner.png" alt="LY JING Mart promotion"></div>
+  <div class="search"><span>⌕</span><input id="search" oninput="renderProducts()" placeholder="Search products..."></div>
+  <div id="categories" class="categories"></div>
+  <div class="section-head"><h2>Products</h2><button onclick="showScreen('shop');renderProducts()">See All ›</button></div>
+  <div id="homeProducts" class="product-grid"></div>
+</section>
+
+<section id="shop" class="screen">
+  <div class="page-head"><button onclick="showScreen('home')">‹</button><div><h2>Shop</h2><small>Everything you need</small></div></div>
+  <div class="search"><span>⌕</span><input id="shopSearch" oninput="renderProducts()" placeholder="Search products..."></div>
+  <div id="shopProducts" class="product-grid"></div>
+</section>
+
+<section id="detail" class="screen"><div id="detailContent"></div></section>
+
+<section id="cart" class="screen">
+  <div class="page-head"><button onclick="showScreen('shop')">‹</button><h2>Your Cart</h2><button class="text-btn" onclick="showScreen('shop')">Continue</button></div>
+  <div id="cartContent"></div>
+</section>
+
+<section id="checkout" class="screen">
+  <div class="page-head"><button onclick="openCart()">‹</button><h2>Checkout</h2></div>
+  <form id="checkoutForm" onsubmit="submitOrder(event)">
+    <div class="card">
+      <div class="card-title">Customer</div>
+      <div class="telegram-user" id="tgUser">Telegram account connected</div>
+      <label>Phone number *</label>
+      <div class="phone-row"><input id="phone" type="tel" inputmode="tel" placeholder="Your phone number" required><button type="button" class="small-btn" onclick="requestPhone()">Use Telegram</button></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Order type</div>
+      <div class="choice-row"><button type="button" id="deliveryBtn" class="choice active" onclick="setDelivery('Delivery')">🚚 Delivery</button><button type="button" id="pickupBtn" class="choice" onclick="setDelivery('Pickup')">🏪 Pickup</button></div>
+      <div id="deliveryFields">
+        <label>Province *</label><select id="province" onchange="updateCheckoutTotals()"><option value="">Select province</option></select>
+        <div class="fee-note">Phnom Penh delivery: <b>$1.50</b> · Other provinces: <b>$2.50</b></div>
+      </div>
+      <div id="pickupInfo" class="pickup-info hidden">Pickup location<br><a href="https://maps.app.goo.gl/8E3JCaY7MLfHdtUB6?g_st=ic" target="_blank">Open LY JING Mart location in Google Maps ›</a></div>
+      <label>Remark / Specific Details</label><textarea id="note" rows="3" placeholder="House number, street, landmark, gate, or other details"></textarea>
+    </div>
+    <div class="card">
+      <div class="card-title">Order summary</div><div id="checkoutSummary"></div>
+      <div class="invoice-note">Payment is handled by invoice after your order is received. No payment is required here.</div>
+    </div>
+    <button id="placeBtn" class="primary full" type="submit">Confirm Order <span>›</span></button>
+  </form>
+</section>
+
+<section id="success" class="screen"><div class="success-card"><div class="success-icon">✓</div><h1>Order Received</h1><p>Thank you. LY JING Mart has received your order.</p><div class="order-number" id="successOrder">#LJM</div><p class="muted">We will send your invoice to this Telegram account.</p><button class="primary full" onclick="showScreen('orders');loadOrders()">View My Orders</button><button class="secondary full" onclick="showScreen('home')">Continue Shopping</button></div></section>
+
+<section id="orders" class="screen">
+  <div class="page-head"><button onclick="showScreen('home')">‹</button><h2>My Orders</h2><button class="icon-btn" onclick="loadOrders()">↻</button></div>
+  <div id="ordersContent" class="orders-list"><div class="loading">Loading orders…</div></div>
+</section>
+
+<section id="contact" class="screen">
+  <div class="page-head"><button onclick="showScreen('home')">‹</button><h2>Contact</h2></div>
+  <div class="contact-card"><img src="assets/logo.png" class="contact-logo"><h2>LY JING MART</h2><p>Your Online Mini Mart</p><a class="contact-line" href="tel:069875200">☎ 069 875 200</a><a class="contact-line" href="https://t.me/lyjingmart" target="_blank">✈ @lyjingmart</a><a class="contact-line" href="https://maps.app.goo.gl/8E3JCaY7MLfHdtUB6?g_st=ic" target="_blank">📍 Shop location</a></div>
+</section>
+</main>
+
+<nav class="bottom-nav">
+ <button class="nav active" onclick="showScreen('home')"><span>⌂</span>Home</button>
+ <button class="nav" onclick="showScreen('shop');renderProducts()"><span>▦</span>Categories</button>
+ <button class="nav cart-nav" onclick="openCart()"><span>🛒</span><b id="cartNavBadge">0</b><small>Cart</small></button>
+ <button class="nav" onclick="showScreen('orders');loadOrders()"><span>▤</span>Orders</button>
+ <button class="nav" onclick="showScreen('contact')"><span>◉</span>Contact</button>
+</nav>
+</div>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
