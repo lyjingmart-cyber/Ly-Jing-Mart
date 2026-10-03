@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LY JING MART</title>
 <style>
-:root{--pink:#ff4f93;--pink2:#ff7fb0;--light:#fff0f6;--text:#222;--muted:#777;--border:#eee}
-*{box-sizing:border-box}body{margin:0;background:#f8f8fa;font-family:Arial,sans-serif;color:var(--text);padding-bottom:82px;-webkit-font-smoothing:antialiased}
-.top{background:rgba(255,255,255,.97);padding:13px 15px;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);box-shadow:0 2px 12px #00000008}
-.brand{display:flex;align-items:center;gap:10px}.brand img{width:45px;height:45px;border-radius:50%;object-fit:cover}.brand strong{font-size:19px;letter-spacing:.2px;flex:1}.cart{font-size:24px;position:relative;cursor:pointer}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
-.search{margin-top:12px;background:#f2f3f5;border:1px solid #ececf0;border-radius:14px;padding:11px 13px;display:flex;gap:8px;box-shadow:inset 0 1px 2px #00000004}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
-main{padding:14px}.banner{height:165px;border-radius:20px;background:linear-gradient(135deg,#ff4f93,#ff8db7);box-shadow:0 8px 24px #ff4f9330;color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:27px}.banner p{font-size:14px}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
-h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px;cursor:pointer;color:#222}.cat div{width:62px;height:62px;margin:auto;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
+:root{--pink:#ec1765;--pink2:#ff4f93;--light:#fff0f6;--text:#171717;--muted:#777;--border:#eeeeef;--surface:#fff}
+*{box-sizing:border-box}body{margin:0;background:#fbfbfc;font-family:Arial,sans-serif;color:var(--text);padding-bottom:82px;-webkit-font-smoothing:antialiased}
+.top{background:#fff;padding:14px 15px;position:sticky;top:0;z-index:20;border-bottom:1px solid #f0f0f2;box-shadow:0 2px 18px #00000007}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover}.brand strong{font-size:20px;font-weight:800;letter-spacing:.2px;flex:1}.cart{font-size:24px;position:relative;cursor:pointer}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
+.search{margin-top:13px;background:#f5f5f7;border:1px solid #ededf0;border-radius:16px;padding:12px 14px;display:flex;gap:8px;box-shadow:inset 0 1px 2px #00000004}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
+main{padding:14px}.banner{height:175px;border-radius:22px;background:linear-gradient(135deg,#ec1765,#ff75a8);box-shadow:0 8px 24px #ff4f9330;color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:27px}.banner p{font-size:14px}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
+h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px;cursor:pointer;color:#222}.cat div{width:68px;height:68px;margin:auto;border-radius:20px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
 .promoCard{margin:18px 0;background:linear-gradient(135deg,#fff0f6,#fff);border:1px solid #ffd5e5;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 5px 18px #ff4f9312}.promoCard h3{margin:5px 0;font-size:17px}.promoCard p{margin:0;color:#777;font-size:12px}.promoTag{display:inline-block;background:var(--pink);color:#fff;border-radius:20px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.5px}.promoCard button{border:0;background:var(--pink);color:#fff;border-radius:10px;padding:10px 13px;font-weight:bold;white-space:nowrap}.head{display:flex;align-items:center;justify-content:space-between}.head h2{margin-bottom:12px}.head a{font-size:12px;color:var(--pink)}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border-radius:17px;padding:10px;box-shadow:0 3px 14px #0000000b;border:1px solid #f0f0f2;transition:.15s}.card:active{transform:scale(.98)}.photo{height:150px;position:relative;border-radius:12px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.dealBadge{position:absolute;left:7px;top:7px;z-index:2;background:var(--pink);color:#fff;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.price del{font-size:11px;color:#999;font-weight:400;margin-left:4px}.emoji{font-size:52px}.name{font-size:14px;font-weight:700;margin-top:10px;line-height:1.25}.price{color:var(--pink);font-weight:800;margin-top:4px}.stock{font-size:11px;color:#888;margin-top:3px}.add{width:100%;border:0;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-radius:10px;padding:9px;margin-top:8px;font-weight:bold;cursor:pointer}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#222;font-size:9px;cursor:pointer;min-width:16.66%;padding:0}.nav b{color:#222}.nav b{color:inherit}.nav b{display:block;font-size:20px;margin:8px 0 2px}.active{color:#222!important}.nav b{color:#222}.nav.active b{color:var(--pink)}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:#fff;border-radius:19px;padding:10px;box-shadow:0 5px 18px #0000000a;border:1px solid #f0f0f2;transition:.15s}.card:active{transform:scale(.98)}.photo{height:155px;position:relative;border-radius:15px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.dealBadge{position:absolute;left:7px;top:7px;z-index:2;background:var(--pink);color:#fff;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.price del{font-size:11px;color:#999;font-weight:400;margin-left:4px}.emoji{font-size:52px}.name{font-size:14px;font-weight:700;margin-top:10px;line-height:1.25}.price{color:var(--pink);font-weight:800;margin-top:4px}.stock{font-size:11px;color:#888;margin-top:3px}.add{width:100%;border:0;background:linear-gradient(135deg,#ec1765,#ff4f93);color:#fff;border-radius:10px;padding:9px;margin-top:8px;font-weight:bold;cursor:pointer}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:72px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#222;font-size:9px;font-weight:500;cursor:pointer;min-width:16.66%;padding:0}.nav b{color:#222}.nav b{color:inherit}.nav b{display:block;font-size:20px;margin:8px 0 2px}.active{color:#222!important}.nav b{color:#222}.nav.active b{color:var(--pink)}
 .page{display:none}.page.active{display:block}.back{border:0;background:none;color:var(--pink);font-size:18px;padding:4px 0 12px;cursor:pointer}
 .cartitem{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:10px}.cartpic{width:65px;height:65px;border-radius:10px;background:#f7f7f7;object-fit:contain}.ci{flex:1}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:0;background:var(--light);border-radius:7px;padding:5px 10px;font-size:16px}.remove{border:0;background:none;color:#999;font-size:18px}
 .summary{background:#fff;border-radius:14px;padding:15px;margin-top:12px}.sumrow{display:flex;justify-content:space-between;margin:8px 0}.total{font-size:18px;font-weight:bold;color:var(--pink);border-top:1px solid #eee;padding-top:10px}.checkout{background:var(--pink);color:#fff;border:0;border-radius:12px;padding:13px;width:100%;font-weight:bold;margin-top:12px;font-size:15px;cursor:pointer}
@@ -23,6 +23,8 @@ h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.
 .contactBtn{display:block;text-decoration:none;background:var(--light);color:#222;border:1px solid #ffd1e2;border-radius:11px;padding:12px;margin-top:10px;font-weight:bold}.contactBtn:hover{background:#ffe5ef}
 .empty{text-align:center;padding:45px 20px;color:#777;background:#fff;border-radius:16px;border:1px solid #eee}.success{text-align:center;background:#fff;border-radius:15px;padding:35px 20px;margin-top:20px}.success .check{font-size:60px;color:#2dbb70}
 @media(min-width:700px){main{max-width:1050px;margin:auto;padding:20px}.top{padding-left:max(15px,calc((100% - 1050px)/2));padding-right:max(15px,calc((100% - 1050px)/2))}.products{grid-template-columns:repeat(4,1fr)}.cats{justify-content:flex-start}.banner{height:190px;padding:34px 30px}.banner h1{font-size:34px}.bottom{max-width:700px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #eee;border-bottom:0;border-radius:18px 18px 0 0}}
+@media(max-width:420px){main{padding:12px}.banner{height:160px;padding:22px 18px}.banner h1{font-size:24px}.photo{height:140px}.card{padding:9px}.name{font-size:13px}.add{padding:9px 5px;font-size:12px}}
+.categoryProductsTitle{font-size:17px;font-weight:800;margin:20px 0 12px}
 </style>
 </head>
 <body>
@@ -35,11 +37,11 @@ h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.
 <section id="home" class="page active">
 <section class="banner"><h1>Shop Smart. Shop LY JING.</h1><p>Fresh products, great prices and easy shopping.</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button></section>
 
-<div class="summary" style="flex:1;margin:0;padding:12px"><b>💬 Support</b><div style="font-size:10px;color:#777;margin-top:4px">Telegram & phone</div></div>
+<div class="summary" style="flex:1;margin:0;padding:12px"><b>💬 </b><div style="font-size:10px;color:#777;margin-top:4px">Telegram & phone</div></div>
 </div>
 <div class="promoCard">
-  <div><div class="promoTag">SPECIAL OFFER</div><h3>Save more on selected items</h3><p>Limited-time deals from LY JING MART.</p></div>
-  <button onclick="openPage('promotion')">View Offers</button>
+  <div><div class="promoTag">LIMITED OFFER</div><h3>Special discounts every day</h3><p>Shop selected products at lower prices.</p></div>
+  <button onclick="openPage('promotion')">View Deals</button>
 </div>
 <div class="head"><h2>🔥 Today's Deals</h2><a href="#" onclick="showAllProducts();return false;">View all</a></div><div class="products" id="products"></div>
 <div class="head"><h2>⭐ Featured Products</h2><a href="#" onclick="showAllProducts();return false;">View all</a></div><div class="products" id="featured"></div>
@@ -81,8 +83,8 @@ h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.
 <button class="back" onclick="openPage('home')">← Home</button>
 <h2>Contact LY JING MART</h2>
 <div class="summary">
-  <h3 style="margin-top:0">We are happy to help</h3>
-  <p style="color:#666">Contact us for orders, products, delivery or promotions.</p>
+  <h3 style="margin-top:0">Contact LY JING MART</h3>
+  <p style="color:#666">For orders, delivery and product information.</p>
   <a class="contactBtn" href="tel:069875200">📞 Call 069 875 200</a>
   <a class="contactBtn" href="https://t.me/lyjingmart" target="_blank">✈️ Telegram @lyjingmart</a>
   <a class="contactBtn" href="https://www.facebook.com/share/1EiS7bVU8i/?mibextid=wwXIfr" target="_blank">f Facebook</a>
