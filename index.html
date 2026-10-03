@@ -5,47 +5,206 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>LY JING MART</title>
 <style>
-:root{--pink:#ff4f93;--light:#fff0f6}
-*{box-sizing:border-box}body{margin:0;background:#fafafa;font-family:Arial,sans-serif;color:#222;padding-bottom:75px}
-.top{background:#fff;padding:14px 15px;position:sticky;top:0;z-index:5;border-bottom:1px solid #eee}
-.brand{display:flex;align-items:center;gap:10px}.brand img{width:45px;height:45px;border-radius:50%;object-fit:cover}.brand strong{font-size:20px;flex:1}.cart{font-size:24px;position:relative}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
-.search{margin-top:12px;background:#f3f3f5;border-radius:13px;padding:11px 13px;display:flex;gap:8px}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
-main{padding:14px}.banner{height:155px;border-radius:18px;background:linear-gradient(135deg,#ff4f93,#ff9fc2);color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:27px}.banner p{font-size:14px}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
-h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px}.cat div{width:62px;height:62px;margin:auto;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
-.head{display:flex;align-items:center;justify-content:space-between}.head h2{margin-bottom:12px}.head a{font-size:12px;color:var(--pink)}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{background:#fff;border-radius:15px;padding:9px;box-shadow:0 2px 10px #0000000d}.photo{height:145px;border-radius:12px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.emoji{font-size:52px}.name{font-size:14px;font-weight:bold;margin-top:9px}.price{color:var(--pink);font-weight:800;margin-top:4px}.stock{font-size:11px;color:#888;margin-top:3px}.add{width:100%;border:0;background:var(--pink);color:#fff;border-radius:10px;padding:9px;margin-top:8px;font-weight:bold}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:65px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:10}.nav{border:0;background:none;color:#777;font-size:10px}.nav b{display:block;font-size:20px;margin:8px 0 2px}.active{color:var(--pink)}
+:root{--pink:#ff4f93;--pink2:#ff7fb0;--light:#fff0f6;--text:#222;--muted:#777;--border:#eee}
+*{box-sizing:border-box}body{margin:0;background:#f8f8fa;font-family:Arial,sans-serif;color:var(--text);padding-bottom:82px;-webkit-font-smoothing:antialiased}
+.top{background:rgba(255,255,255,.97);padding:13px 15px;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border);box-shadow:0 2px 12px #00000008}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:45px;height:45px;border-radius:50%;object-fit:cover}.brand strong{font-size:19px;letter-spacing:.2px;flex:1}.cart{font-size:24px;position:relative;cursor:pointer}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
+.search{margin-top:12px;background:#f2f3f5;border:1px solid #ececf0;border-radius:14px;padding:11px 13px;display:flex;gap:8px;box-shadow:inset 0 1px 2px #00000004}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
+main{padding:14px}.banner{height:165px;border-radius:20px;background:linear-gradient(135deg,#ff4f93,#ff8db7);box-shadow:0 8px 24px #ff4f9330;color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:27px}.banner p{font-size:14px}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
+h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px;cursor:pointer;color:#222}.cat div{width:62px;height:62px;margin:auto;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
+.promoCard{margin:18px 0;background:linear-gradient(135deg,#fff0f6,#fff);border:1px solid #ffd5e5;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 5px 18px #ff4f9312}.promoCard h3{margin:5px 0;font-size:17px}.promoCard p{margin:0;color:#777;font-size:12px}.promoTag{display:inline-block;background:var(--pink);color:#fff;border-radius:20px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.5px}.promoCard button{border:0;background:var(--pink);color:#fff;border-radius:10px;padding:10px 13px;font-weight:bold;white-space:nowrap}.head{display:flex;align-items:center;justify-content:space-between}.head h2{margin-bottom:12px}.head a{font-size:12px;color:var(--pink)}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:13px}.card{background:#fff;border-radius:17px;padding:10px;box-shadow:0 3px 14px #0000000b;border:1px solid #f0f0f2;transition:.15s}.card:active{transform:scale(.98)}.photo{height:150px;position:relative;border-radius:12px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.dealBadge{position:absolute;left:7px;top:7px;z-index:2;background:var(--pink);color:#fff;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.price del{font-size:11px;color:#999;font-weight:400;margin-left:4px}.emoji{font-size:52px}.name{font-size:14px;font-weight:700;margin-top:10px;line-height:1.25}.price{color:var(--pink);font-weight:800;margin-top:4px}.stock{font-size:11px;color:#888;margin-top:3px}.add{width:100%;border:0;background:linear-gradient(135deg,var(--pink),var(--pink2));color:#fff;border-radius:10px;padding:9px;margin-top:8px;font-weight:bold;cursor:pointer}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:70px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#222;font-size:9px;cursor:pointer;min-width:16.66%;padding:0}.nav b{color:#222}.nav b{color:inherit}.nav b{display:block;font-size:20px;margin:8px 0 2px}.active{color:#222!important}.nav b{color:#222}.nav.active b{color:var(--pink)}
+.page{display:none}.page.active{display:block}.back{border:0;background:none;color:var(--pink);font-size:18px;padding:4px 0 12px;cursor:pointer}
+.cartitem{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:10px}.cartpic{width:65px;height:65px;border-radius:10px;background:#f7f7f7;object-fit:contain}.ci{flex:1}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:0;background:var(--light);border-radius:7px;padding:5px 10px;font-size:16px}.remove{border:0;background:none;color:#999;font-size:18px}
+.summary{background:#fff;border-radius:14px;padding:15px;margin-top:12px}.sumrow{display:flex;justify-content:space-between;margin:8px 0}.total{font-size:18px;font-weight:bold;color:var(--pink);border-top:1px solid #eee;padding-top:10px}.checkout{background:var(--pink);color:#fff;border:0;border-radius:12px;padding:13px;width:100%;font-weight:bold;margin-top:12px;font-size:15px;cursor:pointer}
+.form{background:#fff;border-radius:14px;padding:15px}.form label{font-size:12px;font-weight:bold;display:block;margin:12px 0 6px}.form input,.form select,.form textarea{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;font-size:14px}.form textarea{min-height:80px;resize:vertical}.choice{display:flex;gap:10px}.choice button{flex:1;padding:11px;border:1px solid #ddd;background:#fff;border-radius:9px}.choice button.selected{border-color:var(--pink);background:var(--light);color:var(--pink);font-weight:bold}
+.modal{position:fixed;inset:0;background:#0008;z-index:50;display:none;align-items:flex-end}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-height:90vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px}.sheet .bigpic{height:230px;text-align:center}.sheet .bigpic img{height:100%;max-width:100%;object-fit:contain}.close{float:right;border:0;background:#eee;border-radius:50%;width:32px;height:32px}
+.contactBtn{display:block;text-decoration:none;background:var(--light);color:#222;border:1px solid #ffd1e2;border-radius:11px;padding:12px;margin-top:10px;font-weight:bold}.contactBtn:hover{background:#ffe5ef}
+.empty{text-align:center;padding:45px 20px;color:#777;background:#fff;border-radius:16px;border:1px solid #eee}.success{text-align:center;background:#fff;border-radius:15px;padding:35px 20px;margin-top:20px}.success .check{font-size:60px;color:#2dbb70}
+@media(min-width:700px){main{max-width:1050px;margin:auto;padding:20px}.top{padding-left:max(15px,calc((100% - 1050px)/2));padding-right:max(15px,calc((100% - 1050px)/2))}.products{grid-template-columns:repeat(4,1fr)}.cats{justify-content:flex-start}.banner{height:190px;padding:34px 30px}.banner h1{font-size:34px}.bottom{max-width:700px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #eee;border-bottom:0;border-radius:18px 18px 0 0}}
 </style>
 </head>
 <body>
 <header class="top">
-<div class="brand"><img src="logo.png" onerror="this.style.display='none'"><strong>LY JING MART</strong><div class="cart">🛒<span class="badge" id="count">0</span></div></div>
+<div class="brand"><img src="logo.png" onerror="this.style.display='none'"><strong>LY JING MART</strong><div class="cart" onclick="openPage('cart')">🛒<span class="badge" id="count">0</span></div></div>
 <div class="search">🔎<input id="search" placeholder="Search products..."></div>
 </header>
+
 <main>
-<section class="banner"><h1>Shop Smart. Shop LY JING.</h1><p>Fresh products, great prices and easy shopping.</p><button>Shop Now</button></section>
-<div class="head"><h2>Popular Categories</h2><a>View all</a></div>
-<div class="cats">
-<div class="cat"><div>🍜</div><span>Food</span></div><div class="cat"><div>🥤</div><span>Drinks</span></div><div class="cat"><div>🍿</div><span>Snacks</span></div><div class="cat"><div>🧴</div><span>Personal Care</span></div><div class="cat"><div>🏠</div><span>Home</span></div><div class="cat"><div>👶</div><span>Baby</span></div>
+<section id="home" class="page active">
+<section class="banner"><h1>Shop Smart. Shop LY JING.</h1><p>Fresh products, great prices and easy shopping.</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button></section>
+
+<div class="summary" style="flex:1;margin:0;padding:12px"><b>💬 Support</b><div style="font-size:10px;color:#777;margin-top:4px">Telegram & phone</div></div>
 </div>
-<div class="head"><h2>🔥 Top Deals</h2><a>View all</a></div><div class="products" id="products"></div>
-<div class="head"><h2>⭐ Featured Products</h2><a>View all</a></div><div class="products" id="featured"></div>
+<div class="promoCard">
+  <div><div class="promoTag">SPECIAL OFFER</div><h3>Save more on selected items</h3><p>Limited-time deals from LY JING MART.</p></div>
+  <button onclick="openPage('promotion')">View Offers</button>
+</div>
+<div class="head"><h2>🔥 Today's Deals</h2><a href="#" onclick="showAllProducts();return false;">View all</a></div><div class="products" id="products"></div>
+<div class="head"><h2>⭐ Featured Products</h2><a href="#" onclick="showAllProducts();return false;">View all</a></div><div class="products" id="featured"></div>
+</section>
+
+<section id="categories" class="page">
+<button class="back" onclick="openPage('home')">← Home</button>
+<h2>Categories</h2><p style="color:#777;font-size:13px;margin-top:-5px">Browse products by category</p>
+<div class="cats" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible">
+<div class="cat" onclick="filterCategory('Food')"><div>🍜</div><span>Food</span></div>
+<div class="cat" onclick="filterCategory('Drinks')"><div>🥤</div><span>Drinks</span></div>
+<div class="cat" onclick="filterCategory('Snacks')"><div>🍿</div><span>Snacks</span></div>
+<div class="cat" onclick="filterCategory('Personal Care')"><div>🧴</div><span>Personal Care</span></div>
+<div class="cat" onclick="filterCategory('Home')"><div>🏠</div><span>Home</span></div>
+<div class="cat" onclick="filterCategory('Baby')"><div>👶</div><span>Baby</span></div>
+<div class="cat" onclick="filterDiscounts()"><div style="background:#ffe0ec">🏷️</div><span>Discount</span></div>
+</div>
+<div id="categoryProducts" style="margin-top:24px"></div>
+</section>
+
+<section id="cart" class="page"><button class="back" onclick="openPage('home')">← Continue Shopping</button><h2>Shopping Cart</h2><div id="cartList"></div><div id="cartSummary"></div></section>
+
+<section id="checkoutPage" class="page"><button class="back" onclick="openPage('cart')">← Cart</button><h2>Checkout</h2>
+<div class="form">
+<label>Full Name</label><input id="customerName" placeholder="Your name">
+<label>Phone *</label><input id="customerPhone" type="tel" placeholder="Phone number">
+<label>Delivery or Pickup</label><div class="choice"><button id="deliveryBtn" class="selected" onclick="setMethod('Delivery')">🚚 Delivery</button><button id="pickupBtn" onclick="setMethod('Pickup')">🏪 Pickup</button></div>
+<div id="deliveryFields"><label>Province</label><select id="province"><option value="">Select province</option><option>Phnom Penh</option><option>Banteay Meanchey</option><option>Battambang</option><option>Kampong Cham</option><option>Kampong Chhnang</option><option>Kampong Speu</option><option>Kampong Thom</option><option>Kampot</option><option>Kandal</option><option>Kep</option><option>Koh Kong</option><option>Kratie</option><option>Mondulkiri</option><option>Oddar Meanchey</option><option>Pailin</option><option>Preah Sihanouk</option><option>Preah Vihear</option><option>Pursat</option><option>Ratanakiri</option><option>Siem Reap</option><option>Stung Treng</option><option>Svay Rieng</option><option>Takeo</option><option>Tboung Khmum</option></select></div>
+<div id="pickupFields" style="display:none"><label>Pickup location</label><div>LY JING MART pickup point — <a href="https://maps.app.goo.gl/8E3JCaY7MLfHdtUB6?g_st=ic" target="_blank">Open map</a></div></div>
+<label>Remark / House number / Street / Landmark</label><textarea id="remark" placeholder="Example: House 25, Street 271, near..."></textarea>
+</div>
+<div id="checkoutSummary" class="summary"></div><button class="checkout" onclick="placeOrder()">Confirm Order</button>
+</section>
+
+<section id="success" class="page"><div class="success"><div class="check">✓</div><h2>Order Placed Successfully!</h2><p id="orderNumber"></p><p>Thank you for your order. We will contact you soon.</p><button class="checkout" onclick="openPage('home')">Continue Shopping</button></div></section>
+
+
+<section id="contact" class="page">
+<button class="back" onclick="openPage('home')">← Home</button>
+<h2>Contact LY JING MART</h2>
+<div class="summary">
+  <h3 style="margin-top:0">We are happy to help</h3>
+  <p style="color:#666">Contact us for orders, products, delivery or promotions.</p>
+  <a class="contactBtn" href="tel:069875200">📞 Call 069 875 200</a>
+  <a class="contactBtn" href="https://t.me/lyjingmart" target="_blank">✈️ Telegram @lyjingmart</a>
+  <a class="contactBtn" href="https://www.facebook.com/share/1EiS7bVU8i/?mibextid=wwXIfr" target="_blank">f Facebook</a>
+</div>
+<div class="summary">
+  <b>Pickup Location</b>
+  <p>LY JING MART pickup point</p>
+  <a href="https://maps.app.goo.gl/8E3JCaY7MLfHdtUB6?g_st=ic" target="_blank">📍 Open Google Maps</a>
+</div>
+</section>
+
+<section id="promotion" class="page"><button class="back" onclick="openPage('home')">← Home</button><h2>🎁 Promotion</h2><div class="banner"><h2>Special Offers</h2><p>Check LY JING MART for our latest promotions.</p><button class="checkout" onclick="openPage('contact')">Contact Us</button></div></section>
+<section id="orders" class="page"><h2>👤 My Orders</h2><div class="empty">Your orders will appear here.</div></section>
 </main>
-<nav class="bottom"><button class="nav active"><b>⌂</b>Home</button><button class="nav"><b>▦</b>Categories</button><button class="nav"><b>🛒</b>Cart</button><button class="nav"><b>🎁</b>Promotion</button><button class="nav"><b>👤</b>My Orders</button></nav>
+
+<nav class="bottom">
+<button class="nav active" onclick="openPage('home',this)"><b>⌂</b>Home</button>
+<button class="nav" onclick="openPage('categories',this)"><b>▦</b>Categories</button>
+<button class="nav" onclick="openPage('cart',this)"><b>🛒</b>Cart</button>
+<button class="nav" onclick="openPage('promotion',this)"><b>🎁</b>Promotion</button>
+<button class="nav" onclick="openPage('orders',this)"><b>👤</b>My Orders</button>
+<button class="nav" onclick="openPage('contact',this)"><b>☎</b>Contact</button>
+</nav>
+
+<div id="productModal" class="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><button class="close" onclick="closeModal()">✕</button><div id="detail"></div></div></div>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+const ORDER_API_URL="https://script.google.com/macros/s/AKfycbz5xwcHaE1sLcV_9Fpp8_5-9snWlYZa6lJSLKM-M2pgAH6VmWHIvnVwhT84BG8kj/exec";
+const tg=window.Telegram?.WebApp||null;
+if(tg){tg.ready();tg.expand();}
+const TELEGRAM_INIT_DATA=tg?tg.initData:"";
 const products=[
-{id:1,name:"MAMA Noodle",price:1,cat:"Food",img:"mama.png",e:"🍜",stock:20},
-{id:2,name:"Indomie Noodles 80g",price:.85,cat:"Food",img:"indomie.png",e:"🍜",stock:20},
-{id:3,name:"Lay's Chips 50g",price:1,cat:"Snacks",img:"lays.png",e:"🥔",stock:15},
+{id:1,name:"MAMA Noodle",price:1,oldPrice:1.2,cat:"Food",img:"mama.png",e:"🍜",stock:20},
+{id:2,name:"Indomie Noodles 80g",price:.85,oldPrice:1,cat:"Food",img:"indomie.png",e:"🍜",stock:20},
+{id:3,name:"Lay's Chips 50g",price:1,oldPrice:1.25,cat:"Snacks",img:"lays.png",e:"🥔",stock:15},
 {id:4,name:"Coca Cola 1.25L",price:1.2,cat:"Drinks",img:"coke.png",e:"🥤",stock:15},
 {id:5,name:"Colgate",price:2.5,cat:"Personal Care",img:"colgate.png",e:"🪥",stock:10},
-{id:6,name:"Drinking Water",price:.5,cat:"Drinks",img:"water.png",e:"💧",stock:30}];
+{id:6,name:"Drinking Water",price:.5,cat:"Drinks",img:"water.png",e:"💧",stock:30}
+];
 let cart=JSON.parse(localStorage.getItem("lyjing_cart")||"[]");
-function card(p){return `<div class="card"><div class="photo"><img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'"></div><div class="name">${p.name}</div><div class="price">$${p.price.toFixed(2)}</div><div class="stock">${p.stock} in stock</div><button class="add" onclick="add(${p.id})">Add to Cart</button></div>`}
+let method="Delivery";
+
+function save(){localStorage.setItem("lyjing_cart",JSON.stringify(cart));updateCount()}
+function updateCount(){count.textContent=cart.reduce((s,x)=>s+x.qty,0)}
+function card(p){const disc=p.oldPrice&&p.oldPrice>p.price?Math.round((1-p.price/p.oldPrice)*100):0;return `<div class="card" onclick="openDetail(${p.id})"><div class="photo">${disc?`<span class="dealBadge">-${disc}%</span>`:""}<img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'"></div><div class="name">${p.name}</div><div class="price">$${p.price.toFixed(2)} ${p.oldPrice&&p.oldPrice>p.price?`<del>$${p.oldPrice.toFixed(2)}</del>`:""}</div><div class="stock">${p.stock} in stock</div><button class="add" onclick="event.stopPropagation();add(${p.id})">Add to Cart</button></div>`}
 function render(a=products){productsBox.innerHTML=a.map(card).join("");featured.innerHTML=a.slice(0,4).map(card).join("")}
-function add(id){let p=products.find(x=>x.id===id),x=cart.find(x=>x.id===id);x?x.qty++:cart.push({id:p.id,name:p.name,price:p.price,qty:1});localStorage.setItem("lyjing_cart",JSON.stringify(cart));count.textContent=cart.reduce((s,x)=>s+x.qty,0)}
-const productsBox=document.getElementById("products"),featured=document.getElementById("featured"),count=document.getElementById("count");
+function showAllProducts(){render(products);document.getElementById("products").scrollIntoView({behavior:"smooth"});}
+function filterCategory(cat){
+  const filtered=products.filter(p=>p.cat===cat);
+  categoryProducts.innerHTML=filtered.length
+    ? '<div class="products">'+filtered.map(card).join("")+'</div>'
+    : '<div class="empty">No products in this category yet.</div>';
+  categoryProducts.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function filterDiscounts(){
+  const filtered=products.filter(p=>p.oldPrice&&p.oldPrice>p.price);
+  categoryProducts.innerHTML='<h3 style="margin:0 0 12px">🏷️ Discount Products</h3><div class="products">'+filtered.map(card).join("")+'</div>';
+  categoryProducts.scrollIntoView({behavior:"smooth",block:"start"});
+}
+function add(id){let p=products.find(x=>x.id===id),x=cart.find(x=>x.id===id);if(x)x.qty++;else cart.push({id:p.id,name:p.name,price:p.price,img:p.img,e:p.e,qty:1});save()}
+function openDetail(id){let p=products.find(x=>x.id===id);detail.innerHTML=`<div class="bigpic"><img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'"></div><h2>${p.name}</h2><div class="price">$${p.price.toFixed(2)}</div><div class="stock">${p.stock} in stock</div><button class="checkout" onclick="add(${p.id});closeModal()">Add to Cart</button>`;productModal.classList.add("show")}
+function closeModal(){productModal.classList.remove("show")}
+function openPage(id,btn){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");else if(id==="categories")document.querySelectorAll(".nav")[1].classList.add("active");if(id==="cart")renderCart();if(id==="checkoutPage")renderCheckout();window.scrollTo(0,0)}
+function renderCart(){if(!cart.length){cartList.innerHTML='<div class="empty">Your cart is empty.</div>';cartSummary.innerHTML="";return}cartList.innerHTML=cart.map(x=>`<div class="cartitem"><img class="cartpic" src="${x.img}" onerror="this.style.display='none'"><div class="ci"><b>${x.name}</b><div class="price">$${x.price.toFixed(2)}</div><div class="qty"><button onclick="changeQty(${x.id},-1)">−</button><span>${x.qty}</span><button onclick="changeQty(${x.id},1)">+</button><button class="remove" onclick="removeItem(${x.id})">🗑</button></div></div></div>`).join("");let subtotal=cart.reduce((s,x)=>s+x.price*x.qty,0);cartSummary.innerHTML=`<div class="summary"><div class="sumrow"><span>Items</span><span>$${subtotal.toFixed(2)}</span></div><div class="sumrow"><span>Delivery fee</span><span>Calculated at checkout</span></div><div class="sumrow total"><span>Total</span><span>$${subtotal.toFixed(2)}</span></div><button class="checkout" onclick="openPage('checkoutPage')">Checkout →</button></div>`}
+function changeQty(id,n){let x=cart.find(x=>x.id===id);if(!x)return;x.qty+=n;if(x.qty<=0)cart=cart.filter(x=>x.id!==id);save();renderCart()}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);save();renderCart()}
+function setMethod(m){method=m;deliveryBtn.classList.toggle("selected",m==="Delivery");pickupBtn.classList.toggle("selected",m==="Pickup");deliveryFields.style.display=m==="Delivery"?"block":"none";pickupFields.style.display=m==="Pickup"?"block":"none";renderCheckout()}
+function deliveryFee(){if(method==="Pickup")return 0;return province.value==="Phnom Penh"?1.5:2.5}
+function renderCheckout(){let sub=cart.reduce((s,x)=>s+x.price*x.qty,0),fee=deliveryFee();checkoutSummary.innerHTML=`<div class="sumrow"><span>Items</span><span>$${sub.toFixed(2)}</span></div><div class="sumrow"><span>Delivery Fee</span><span>$${fee.toFixed(2)}</span></div><div class="sumrow total"><span>Total</span><span>$${(sub+fee).toFixed(2)}</span></div>`}
+async function placeOrder(){
+if(!cart.length){alert("Your cart is empty.");return}
+if(!TELEGRAM_INIT_DATA){alert("Please open LY JING MART from Telegram using the Shop Now button.");return}
+if(!customerPhone.value.trim()){alert("Please enter your phone number.");customerPhone.focus();return}
+if(method==="Delivery"&&!province.value){alert("Please select your province.");province.focus();return}
+
+const subtotal=cart.reduce((sum,x)=>sum+x.price*x.qty,0);
+const fee=deliveryFee();
+const total=Number((subtotal+fee).toFixed(2));
+const tgUser=tg?.initDataUnsafe?.user||{};
+const orderId="LJM"+Date.now().toString().slice(-6);
+
+const order={
+ orderId:orderId,
+ customer:{
+   name:customerName.value.trim()||[tgUser.first_name||"",tgUser.last_name||""].join(" ").trim(),
+   phone:customerPhone.value.trim()
+ },
+ delivery:method,
+ province:method==="Pickup"?"":province.value,
+ deliveryFee:fee,
+ subtotal:subtotal,
+ total:total,
+ note:remark.value.trim(),
+ items:cart.map(x=>({id:x.id,name:x.name,price:x.price,qty:x.qty}))
+};
+
+try{
+ const btn=document.querySelector('#checkoutPage .checkout');
+ if(btn)btn.disabled=true;
+ if(btn)btn.textContent="Sending Order...";
+ const response=await fetch(ORDER_API_URL,{
+   method:"POST",
+   headers:{"Content-Type":"text/plain;charset=utf-8"},
+   body:JSON.stringify({initData:TELEGRAM_INIT_DATA,order:order})
+ });
+ const result=await response.json();
+ if(!result.success) throw new Error(result.error||"Order server rejected the order.");
+ cart=[];save();
+ orderNumber.textContent="Order Number: #"+(result.orderId||orderId);
+ openPage("success");
+}catch(error){
+ console.error(error);
+ alert("Order could not be sent.\n\n"+error.message);
+}finally{
+ const btn=document.querySelector('#checkoutPage .checkout');
+ if(btn){btn.disabled=false;btn.textContent="Confirm Order";}
+}
+}
+const categoryProducts=document.getElementById("categoryProducts"),productsBox=document.getElementById("products"),featured=document.getElementById("featured"),count=document.getElementById("count"),cartList=document.getElementById("cartList"),cartSummary=document.getElementById("cartSummary"),checkoutSummary=document.getElementById("checkoutSummary"),productModal=document.getElementById("productModal"),detail=document.getElementById("detail"),deliveryBtn=document.getElementById("deliveryBtn"),pickupBtn=document.getElementById("pickupBtn"),deliveryFields=document.getElementById("deliveryFields"),pickupFields=document.getElementById("pickupFields"),province=document.getElementById("province"),customerPhone=document.getElementById("customerPhone"),customerName=document.getElementById("customerName"),remark=document.getElementById("remark"),orderNumber=document.getElementById("orderNumber");
 document.getElementById("search").oninput=e=>{let q=e.target.value.toLowerCase();render(products.filter(p=>(p.name+" "+p.cat).toLowerCase().includes(q)))};
-render();count.textContent=cart.reduce((s,x)=>s+x.qty,0);
+province.onchange=renderCheckout;
+render();updateCount();
 </script>
 </body></html>
