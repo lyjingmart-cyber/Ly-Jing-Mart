@@ -7,23 +7,62 @@
 <style>
 :root{--pink:#ec1765;--pink2:#ff4f93;--light:#fff0f6;--text:#171717;--muted:#777;--border:#eeeeef;--surface:#fff}
 *{box-sizing:border-box}body{margin:0;background:#fbfbfc;font-family:Arial,sans-serif;color:var(--text);padding-bottom:82px;-webkit-font-smoothing:antialiased}
-.top{background:#fff;padding:14px 15px;position:sticky;top:0;z-index:20;border-bottom:1px solid #f0f0f2;box-shadow:0 2px 18px #00000007}
-.brand{display:flex;align-items:center;gap:10px}.brand img{width:48px;height:48px;border-radius:50%;object-fit:cover}.brand strong{font-size:20px;font-weight:800;letter-spacing:.2px;flex:1}.cart{font-size:24px;position:relative;cursor:pointer}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
-.search{margin-top:13px;background:#f5f5f7;border:1px solid #ededf0;border-radius:16px;padding:12px 14px;display:flex;gap:8px;box-shadow:inset 0 1px 2px #00000004}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
-main{padding:14px}.banner{height:175px;border-radius:22px;background:linear-gradient(135deg,#ec1765,#ff75a8);box-shadow:0 8px 24px #ff4f9330;color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:27px}.banner p{font-size:14px}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
-h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px;cursor:pointer;color:#222}.cat div{width:68px;height:68px;margin:auto;border-radius:20px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
-.promoCard{margin:18px 0;background:linear-gradient(135deg,#fff0f6,#fff);border:1px solid #ffd5e5;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 5px 18px #ff4f9312}.promoCard h3{margin:5px 0;font-size:17px}.promoCard p{margin:0;color:#777;font-size:12px}.promoTag{display:inline-block;background:var(--pink);color:#fff;border-radius:20px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.5px}.promoCard button{border:0;background:var(--pink);color:#fff;border-radius:10px;padding:10px 13px;font-weight:bold;white-space:nowrap}.head{display:flex;align-items:center;justify-content:space-between}.head h2{margin-bottom:12px}.head a{font-size:12px;color:var(--pink)}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:#fff;border-radius:19px;padding:10px;box-shadow:0 5px 18px #0000000a;border:1px solid #f0f0f2;transition:.15s}.card:active{transform:scale(.98)}.photo{height:155px;position:relative;border-radius:15px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:100%;height:100%;object-fit:contain}.dealBadge{position:absolute;left:7px;top:7px;z-index:2;background:var(--pink);color:#fff;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.price del{font-size:11px;color:#999;font-weight:400;margin-left:4px}.emoji{font-size:52px}.name{font-size:14px;font-weight:700;margin-top:10px;line-height:1.25}.price{color:var(--pink);font-weight:800;margin-top:4px}.stock{font-size:11px;color:#888;margin-top:3px}.add{width:100%;border:0;background:linear-gradient(135deg,#ec1765,#ff4f93);color:#fff;border-radius:10px;padding:9px;margin-top:8px;font-weight:bold;cursor:pointer}
-.bottom{position:fixed;bottom:0;left:0;right:0;height:72px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#222;font-size:9px;font-weight:500;cursor:pointer;min-width:16.66%;padding:0}.nav b{color:#222}.nav b{color:inherit}.nav b{display:block;font-size:20px;margin:8px 0 2px}.active{color:#222!important}.nav b{color:#222}.nav.active b{color:var(--pink)}
+.top{background:#fff;padding:10px 12px;position:sticky;top:0;z-index:20;border-bottom:1px solid #f0f0f2;box-shadow:0 2px 18px #00000007}
+.brand{display:flex;align-items:center;gap:10px}.brand img{width:42px;height:42px;border-radius:50%;object-fit:cover}.brand strong{font-size:20px;font-weight:800;letter-spacing:.2px;flex:1}.cart{font-size:24px;position:relative;cursor:pointer}.badge{position:absolute;right:-7px;top:-7px;background:var(--pink);color:#fff;border-radius:50%;font-size:11px;min-width:19px;text-align:center;padding:3px}
+.search{margin-top:9px;background:#f5f5f7;border:1px solid #ededf0;border-radius:16px;padding:12px 14px;display:flex;gap:8px;box-shadow:inset 0 1px 2px #00000004}.search input{border:0;outline:0;background:none;width:100%;font-size:14px}
+main{padding:10px 12px;max-width:680px;margin:auto}.banner{height:145px;border-radius:22px;background:linear-gradient(135deg,#ec1765,#ff75a8);box-shadow:0 8px 24px #ff4f9330;color:#fff;padding:25px 20px}.banner h1{margin:0;font-size:23px;line-height:1.1}.banner p{font-size:12px;margin:8px 0}.banner button{border:0;border-radius:20px;padding:9px 16px;color:var(--pink);font-weight:bold}
+h2{font-size:17px;margin:16px 0 10px}.cats{display:flex;gap:14px;overflow:auto}.cat{min-width:70px;text-align:center;font-size:11px;cursor:pointer;color:#222}.cat div{width:68px;height:68px;margin:auto;border-radius:20px;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:28px}.cat span{display:block;margin-top:6px}
+.promoCard{margin:12px 0;background:linear-gradient(135deg,#fff0f6,#fff);border:1px solid #ffd5e5;border-radius:18px;padding:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 5px 18px #ff4f9312}.promoCard h3{margin:5px 0;font-size:17px}.promoCard p{margin:0;color:#777;font-size:12px}.promoTag{display:inline-block;background:var(--pink);color:#fff;border-radius:20px;padding:5px 9px;font-size:9px;font-weight:800;letter-spacing:.5px}.promoCard button{border:0;background:var(--pink);color:#fff;border-radius:10px;padding:10px 13px;font-weight:bold;white-space:nowrap}.head{display:flex;align-items:center;justify-content:space-between}.head h2{margin-bottom:12px}.head a{font-size:12px;color:var(--pink)}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card{background:#fff;border-radius:16px;padding:8px;box-shadow:0 5px 18px #0000000a;border:1px solid #f0f0f2;transition:.15s}.card:active{transform:scale(.98)}.photo{height:145px;position:relative;border-radius:15px;background:#f7f7f7;display:flex;align-items:center;justify-content:center;overflow:hidden}.photo img{width:92%;height:92%;object-fit:contain}.dealBadge{position:absolute;left:7px;top:7px;z-index:2;background:var(--pink);color:#fff;border-radius:8px;padding:4px 6px;font-size:10px;font-weight:800}.price del{font-size:11px;color:#999;font-weight:400;margin-left:4px}.emoji{font-size:52px}.name{font-size:13px;font-weight:700;margin-top:7px;line-height:1.2}.price{color:var(--pink);font-weight:800;margin-top:3px;font-size:14px}.stock{font-size:10px;color:#888;margin-top:2px}.add{width:100%;border:0;background:linear-gradient(135deg,#ec1765,#ff4f93);color:#fff;border-radius:9px;padding:8px;margin-top:6px;font-weight:bold;cursor:pointer}
+.bottom{position:fixed;bottom:0;left:0;right:0;height:64px;background:#fff;border-top:1px solid #eee;display:flex;justify-content:space-around;z-index:30}.nav{border:0;background:none;color:#222;font-size:9px;font-weight:500;cursor:pointer;min-width:16.66%;padding:0}.nav b{color:#222}.nav b{color:inherit}.nav b{display:block;font-size:18px;margin:6px 0 1px}.active{color:#222!important}.nav b{color:#222}.nav.active b{color:var(--pink)}
 .page{display:none}.page.active{display:block}.back{border:0;background:none;color:var(--pink);font-size:18px;padding:4px 0 12px;cursor:pointer}
-.cartitem{background:#fff;border-radius:14px;padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:10px}.cartpic{width:65px;height:65px;border-radius:10px;background:#f7f7f7;object-fit:contain}.ci{flex:1}.qty{display:flex;align-items:center;gap:8px;margin-top:7px}.qty button{border:0;background:var(--light);border-radius:7px;padding:5px 10px;font-size:16px}.remove{border:0;background:none;color:#999;font-size:18px}
-.summary{background:#fff;border-radius:14px;padding:15px;margin-top:12px}.sumrow{display:flex;justify-content:space-between;margin:8px 0}.total{font-size:18px;font-weight:bold;color:var(--pink);border-top:1px solid #eee;padding-top:10px}.checkout{background:var(--pink);color:#fff;border:0;border-radius:12px;padding:13px;width:100%;font-weight:bold;margin-top:12px;font-size:15px;cursor:pointer}
-.form{background:#fff;border-radius:14px;padding:15px}.form label{font-size:12px;font-weight:bold;display:block;margin:12px 0 6px}.form input,.form select,.form textarea{width:100%;padding:11px;border:1px solid #ddd;border-radius:9px;font-size:14px}.form textarea{min-height:80px;resize:vertical}.choice{display:flex;gap:10px}.choice button{flex:1;padding:11px;border:1px solid #ddd;background:#fff;border-radius:9px}.choice button.selected{border-color:var(--pink);background:var(--light);color:var(--pink);font-weight:bold}
+.cartitem{background:#fff;border-radius:13px;padding:9px;margin-bottom:8px;display:flex;align-items:center;gap:10px}.cartpic{width:52px;height:52px;border-radius:10px;background:#f7f7f7;object-fit:contain}.ci{flex:1}.qty{display:flex;align-items:center;gap:6px;margin-top:5px}.qty button{border:0;background:var(--light);border-radius:7px;padding:4px 8px;font-size:14px}.remove{border:0;background:none;color:#999;font-size:18px}
+.summary{background:#fff;border-radius:13px;padding:11px;margin-top:9px}.sumrow{display:flex;justify-content:space-between;margin:6px 0;font-size:13px}.total{font-size:16px;font-weight:bold;color:var(--pink);border-top:1px solid #eee;padding-top:10px}.checkout{background:var(--pink);color:#fff;border:0;border-radius:11px;padding:11px;width:100%;font-weight:bold;margin-top:9px;font-size:14px;cursor:pointer}
+.form{background:#fff;border-radius:13px;padding:11px}.form label{font-size:11px;font-weight:bold;display:block;margin:9px 0 5px}.form input,.form select,.form textarea{width:100%;padding:9px;border:1px solid #ddd;border-radius:9px;font-size:14px}.form textarea{min-height:60px;resize:vertical}.choice{display:flex;gap:10px}.choice button{flex:1;padding:9px;border:1px solid #ddd;background:#fff;border-radius:9px}.choice button.selected{border-color:var(--pink);background:var(--light);color:var(--pink);font-weight:bold}
 .modal{position:fixed;inset:0;background:#0008;z-index:50;display:none;align-items:flex-end}.modal.show{display:flex}.sheet{background:#fff;width:100%;max-height:90vh;overflow:auto;border-radius:20px 20px 0 0;padding:18px}.sheet .bigpic{height:230px;text-align:center}.sheet .bigpic img{height:100%;max-width:100%;object-fit:contain}.close{float:right;border:0;background:#eee;border-radius:50%;width:32px;height:32px}
 .contactBtn{display:block;text-decoration:none;background:var(--light);color:#222;border:1px solid #ffd1e2;border-radius:11px;padding:12px;margin-top:10px;font-weight:bold}.contactBtn:hover{background:#ffe5ef}
-.empty{text-align:center;padding:45px 20px;color:#777;background:#fff;border-radius:16px;border:1px solid #eee}.success{text-align:center;background:#fff;border-radius:15px;padding:35px 20px;margin-top:20px}.success .check{font-size:60px;color:#2dbb70}
+.empty{text-align:center;padding:45px 20px;color:#777;background:#fff;border-radius:16px;border:1px solid #eee}.success{text-align:center;background:#fff;border-radius:16px;padding:24px 16px;margin-top:14px;box-shadow:0 5px 20px #00000008}.success .check{font-size:50px;color:#2dbb70}
 @media(min-width:700px){main{max-width:1050px;margin:auto;padding:20px}.top{padding-left:max(15px,calc((100% - 1050px)/2));padding-right:max(15px,calc((100% - 1050px)/2))}.products{grid-template-columns:repeat(4,1fr)}.cats{justify-content:flex-start}.banner{height:190px;padding:34px 30px}.banner h1{font-size:34px}.bottom{max-width:700px;left:50%;right:auto;transform:translateX(-50%);border:1px solid #eee;border-bottom:0;border-radius:18px 18px 0 0}}
-@media(max-width:420px){main{padding:12px}.banner{height:160px;padding:22px 18px}.banner h1{font-size:24px}.photo{height:140px}.card{padding:9px}.name{font-size:13px}.add{padding:9px 5px;font-size:12px}}
+@media(max-width:420px){
+  body{padding-bottom:70px}
+  main{padding:8px 10px}
+  .top{padding:9px 10px}
+  .brand img{width:40px;height:40px}
+  .brand strong{font-size:18px}
+  .search{padding:9px 11px}
+  .banner{height:135px;padding:19px 16px;border-radius:18px}
+  .banner h1{font-size:22px}
+  .banner p{font-size:11px}
+  .banner button{padding:8px 13px;font-size:12px}
+  h2{font-size:16px;margin:14px 0 9px}
+  .products{gap:8px}
+  .card{padding:7px;border-radius:14px}
+  .photo{height:132px;border-radius:12px}
+  .photo img{width:94%;height:94%}
+  .name{font-size:12px;margin-top:6px}
+  .price{font-size:13px}
+  .stock{font-size:9px}
+  .add{padding:7px 4px;font-size:11px;margin-top:5px}
+  .promoCard{padding:11px;margin:10px 0;border-radius:14px}
+  .promoCard h3{font-size:14px}
+  .promoCard p{font-size:10px}
+  .promoCard button{padding:8px 10px;font-size:11px}
+  .bottom{height:64px}
+  .cartitem{padding:8px;margin-bottom:7px}
+  .cartpic{width:48px;height:48px}
+  .ci b{font-size:12px}
+  .qty button{padding:3px 7px;font-size:13px}
+  .summary{padding:9px;margin-top:7px}
+  .sumrow{font-size:12px;margin:5px 0}
+  .total{font-size:15px}
+  .checkout{padding:10px;font-size:13px;margin-top:7px}
+  .form{padding:9px}
+  .form label{margin:7px 0 4px}
+  .form input,.form select,.form textarea{padding:8px;font-size:13px}
+  .form textarea{min-height:52px}
+  .success{padding:20px 14px;margin-top:10px}
+  .success .check{font-size:46px}
+}
 .categoryProductsTitle{font-size:17px;font-weight:800;margin:20px 0 12px}
 </style>
 </head>
@@ -37,8 +76,6 @@ h2{font-size:18px;margin:22px 0 12px}.cats{display:flex;gap:14px;overflow:auto}.
 <section id="home" class="page active">
 <section class="banner"><h1>Shop Smart. Shop LY JING.</h1><p>Fresh products, great prices and easy shopping.</p><button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Now</button></section>
 
-<div class="summary" style="flex:1;margin:0;padding:12px"><b>💬 </b><div style="font-size:10px;color:#777;margin-top:4px">Telegram & phone</div></div>
-</div>
 <div class="promoCard">
   <div><div class="promoTag">LIMITED OFFER</div><h3>Special discounts every day</h3><p>Shop selected products at lower prices.</p></div>
   <button onclick="openPage('promotion')">View Deals</button>
