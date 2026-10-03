@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#ff2f86">
+<title>LY JING Mart — Admin</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#fff5f9;
+  color:#222;
+}
+.header{
+  background:#ff2f86;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+.header h1{margin:0;font-size:24px}
+.header p{margin:5px 0 0;opacity:.9}
+
+.container{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+h2{margin-top:0;color:#ff2f86}
+
+label{
+  display:block;
+  font-weight:600;
+  margin:14px 0 6px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:16px;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:13px 18px;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.primary{
+  width:100%;
+  background:#ff2f86;
+  color:white;
+  font-weight:bold;
+  margin-top:18px;
+}
+
+.secondary{
+  background:#ffe1ed;
+  color:#d71967;
+  margin-top:10px;
+}
+
+.preview{
+  width:120px;
+  height:120px;
+  object-fit:contain;
+  border-radius:12px;
+  border:1px solid #eee;
+  margin-top:10px;
+  display:none;
+}
+
+.product{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  border-bottom:1px solid #eee;
+  padding:12px 0;
+}
+
+.product:last-child{border-bottom:0}
+
+.product img{
+  width:60px;
+  height:60px;
+  object-fit:contain;
+  border-radius:10px;
+  background:#fafafa;
+}
+
+.product-info{
+  flex:1;
+}
+
+.product-name{
+  font-weight:bold;
+}
+
+.product-price{
+  color:#ff2f86;
+  font-weight:bold;
+}
+
+.delete{
+  background:#ffe5e5;
+  color:#d00;
+  padding:8px 12px;
+  font-size:13px;
+}
+
+.message{
+  display:none;
+  background:#e8fff0;
+  color:#08752f;
+  padding:12px;
+  border-radius:10px;
+  margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <h1>LY JING MART</h1>
+  <p>Admin Product Management</p>
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <h2>➕ Add Product</h2>
+
+    <label>Product Photo</label>
+    <input
+      type="file"
+      id="photo"
+      accept="image/*"
+      onchange="previewPhoto(event)"
+    >
+
+    <img id="preview" class="preview">
+
+    <label>Product Name</label>
+    <input
+      id="productName"
+      type="text"
+      placeholder="Example: MAMA Noodle"
+    >
+
+    <label>Price ($)</label>
+    <input
+      id="productPrice"
+      type="number"
+      step="0.01"
+      min="0"
+      placeholder="1.00"
+    >
+
+    <label>Category</label>
+    <select id="productCategory"></select>
+
+    <label>Stock</label>
+    <input
+      id="productStock"
+      type="number"
+      min="0"
+      placeholder="100"
+    >
+
+    <button
+      class="primary"
+      onclick="saveProduct()"
+    >
+      Save Product
+    </button>
+
+    <div id="message" class="message">
+      ✅ Product saved successfully.
+    </div>
+
+  </div>
+
+  <div class="card">
+
+    <h2>🗂️ Categories</h2>
+
+    <input
+      id="newCategory"
+      type="text"
+      placeholder="Example: Drinks"
+    >
+
+    <button
+      class="secondary"
+      onclick="addCategory()"
+    >
+      + Add Category
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <h2>🛍️ Products</h2>
+
+    <div id="productList"></div>
+
+  </div>
+
+</div>
+
+<script>
+
+const DEFAULT_CATEGORIES = [
+  "Food",
+  "Snacks",
+  "Drinks",
+  "Home"
+];
+
+let categories =
+  JSON.parse(
+    localStorage.getItem("lyjing_categories") ||
+    "null"
+  ) || DEFAULT_CATEGORIES;
+
+let products =
+  JSON.parse(
+    localStorage.getItem("lyjing_products") ||
+    "[]"
+  );
+
+let selectedPhoto = "";
+
+function saveCategories(){
+
+  localStorage.setItem(
+    "lyjing_categories",
+    JSON.stringify(categories)
+  );
+
+}
+
+function saveProducts(){
+
+  localStorage.setItem(
+    "lyjing_products",
+    JSON.stringify(products)
+  );
+
+}
+
+function renderCategories(){
+
+  const select =
+    document.getElementById(
+      "productCategory"
+    );
+
+  select.innerHTML =
+    categories.map(function(cat){
+
+      return `
+        <option value="${escapeHtml(cat)}">
+          ${escapeHtml(cat)}
+        </option>
+      `;
+
+    }).join("");
+
+}
+
+function addCategory(){
+
+  const input =
+    document.getElementById(
+      "newCategory"
+    );
+
+  const name =
+    input.value.trim();
+
+  if(!name){
+    alert("Please enter a category.");
+    return;
+  }
+
+  if(
+    categories.some(
+      c => c.toLowerCase() === name.toLowerCase()
+    )
+  ){
+
+    alert("This category already exists.");
+    return;
+
+  }
+
+  categories.push(name);
+
+  saveCategories();
+
+  input.value="";
+
+  renderCategories();
+
+  alert("✅ Category added.");
+
+}
+
+function previewPhoto(event){
+
+  const file =
+    event.target.files[0];
+
+  if(!file) return;
+
+  const reader =
+    new FileReader();
+
+  reader.onload=function(e){
+
+    selectedPhoto =
+      e.target.result;
+
+    const preview =
+      document.getElementById(
+        "preview"
+      );
+
+    preview.src =
+      selectedPhoto;
+
+    preview.style.display =
+      "block";
+
+  };
+
+  reader.readAsDataURL(file);
+
+}
+
+function saveProduct(){
+
+  const name =
+    document
+      .getElementById("productName")
+      .value
+      .trim();
+
+  const price =
+    Number(
+      document
+        .getElementById("productPrice")
+        .value
+    );
+
+  const category =
+    document
+      .getElementById("productCategory")
+      .value;
+
+  const stock =
+    Number(
+      document
+        .getElementById("productStock")
+        .value
+    );
+
+  if(!selectedPhoto){
+
+    alert("Please select a product photo.");
+
+    return;
+
+  }
+
+  if(!name){
+
+    alert("Please enter the product name.");
+
+    return;
+
+  }
+
+  if(!price || price < 0){
+
+    alert("Please enter a valid price.");
+
+    return;
+
+  }
+
+  if(stock < 0){
+
+    alert("Please enter valid stock.");
+
+    return;
+
+  }
+
+  const product = {
+
+    id:
+      Date.now(),
+
+    name:
+      name,
+
+    price:
+      Number(price.toFixed(2)),
+
+    category:
+      category,
+
+    stock:
+      stock,
+
+    image:
+      selectedPhoto
+
+  };
+
+  products.push(product);
+
+  saveProducts();
+
+  document
+    .getElementById("productName")
+    .value="";
+
+  document
+    .getElementById("productPrice")
+    .value="";
+
+  document
+    .getElementById("productStock")
+    .value="";
+
+  document
+    .getElementById("photo")
+    .value="";
+
+  selectedPhoto="";
+
+  document
+    .getElementById("preview")
+    .style.display="none";
+
+  document
+    .getElementById("message")
+    .style.display="block";
+
+  renderProducts();
+
+  setTimeout(function(){
+
+    document
+      .getElementById("message")
+      .style.display="none";
+
+  },3000);
+
+}
+
+function renderProducts(){
+
+  const list =
+    document.getElementById(
+      "productList"
+    );
+
+  if(!products.length){
+
+    list.innerHTML =
+      "<p>No products added yet.</p>";
+
+    return;
+
+  }
+
+  list.innerHTML =
+    products.map(function(p){
+
+      return `
+        <div class="product">
+
+          <img
+            src="${p.image}"
+            alt=""
+          >
+
+          <div class="product-info">
+
+            <div class="product-name">
+              ${escapeHtml(p.name)}
+            </div>
+
+            <div class="product-price">
+              $${Number(p.price).toFixed(2)}
+            </div>
+
+            <small>
+              ${escapeHtml(p.category)}
+              · Stock: ${p.stock}
+            </small>
+
+          </div>
+
+          <button
+            class="delete"
+            onclick="deleteProduct(${p.id})"
+          >
+            Delete
+          </button>
+
+        </div>
+      `;
+
+    }).join("");
+
+}
+
+function deleteProduct(id){
+
+  if(
+    !confirm(
+      "Delete this product?"
+    )
+  ) return;
+
+  products =
+    products.filter(
+      p => p.id !== id
+    );
+
+  saveProducts();
+
+  renderProducts();
+
+}
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+renderCategories();
+renderProducts();
+
+</script>
+
+</body>
+</html>
