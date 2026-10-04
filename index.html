@@ -177,8 +177,95 @@ h2{font-size:18px;margin:22px 0 12px}
   .product-card button{font-size:11px;padding:7px 4px}
   .category-card{padding:10px}
 }
+
+@media (max-width:600px){
+  body{font-size:12px}
+  .container{padding:8px 8px 78px}
+  header{padding:7px 8px}
+  header img,.logo{height:34px;max-width:130px}
+  h1{font-size:18px;margin:7px 0}
+  h2{font-size:15px;margin:7px 0}
+  h3{font-size:12px}
+  .banner{margin:6px 0;border-radius:12px}
+  .banner img{max-height:105px;object-fit:cover}
+  .products{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .product-card{padding:5px;border-radius:10px}
+  .product-card img,.product-image{height:72px}
+  .product-card h3{font-size:10px;line-height:1.15;margin:4px 0 2px}
+  .product-card .price{font-size:12px}
+  .product-card button{font-size:10px;padding:6px 2px;border-radius:8px}
+  .card,.checkout-card,.cart-card,.form-card{padding:9px!important;border-radius:11px!important;margin-bottom:7px!important}
+  input,select,textarea{padding:8px!important;font-size:12px!important}
+  button{padding:8px 10px;font-size:12px}
+  .cart-item{padding:6px 0!important}
+  .cart-item img{width:48px!important;height:48px!important}
+  .bottom-nav{height:54px}
+  .bottom-nav a,.bottom-nav button{font-size:10px}
+  .bottom-nav i{font-size:16px}
+}
+
+.cart-count-badge{position:absolute;top:-5px;right:-8px;min-width:17px;height:17px;padding:0 4px;border-radius:999px;background:#ff2f86;color:#fff;font-size:10px;font-weight:800;line-height:17px;text-align:center;border:2px solid #fff;display:none}
+.cart-nav-wrap{position:relative;display:inline-flex;align-items:center;justify-content:center}
+@media(max-width:600px){.cart-count-badge{min-width:16px;height:16px;line-height:16px;font-size:9px;top:-4px;right:-7px}}
+
+.cart-nav-icon{position:relative;display:inline-block!important;font-style:normal}
+.cart-nav-icon .cart-count-badge{position:absolute;top:-7px;right:-10px}
+<style>
+.discountPill{font-weight:800}
+.discountHint{display:none;background:#fff0f6;color:#ff2f86;border-radius:9px;padding:7px 9px;margin:6px 0;font-size:11px}
+<style>
+.categoryPills,.catPills,.categories-scroll{display:flex;gap:7px;overflow-x:auto;white-space:nowrap;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.categoryPills::-webkit-scrollbar,.catPills::-webkit-scrollbar,.categories-scroll::-webkit-scrollbar{display:none}
+.categoryPills .catPill,.catPills .catPill,.categories-scroll .catPill{flex:0 0 auto}
+<style>
+@media(max-width:600px){
+  .categoryPills,.catPills,.categories-scroll{padding-bottom:3px}
+  .catPill{padding:6px 10px;font-size:11px;border-radius:999px}
+}
+
+.scrollCategories{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow-x:scroll!important;
+  overflow-y:hidden!important;
+  white-space:nowrap!important;
+  touch-action:pan-x!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:none!important;
+}
+.scrollCategories::-webkit-scrollbar{display:none!important}
+.scrollCategories .catPill{
+  flex:0 0 auto!important;
+  display:inline-flex!important;
+  white-space:nowrap!important;
+}
 </style>
 
+
+<style id="category-scroll-fix">
+.categoryPills,.catPills,.categories-scroll,.scrollCategories{
+  display:flex!important;
+  flex-wrap:nowrap!important;
+  width:100%!important;
+  max-width:100%!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  white-space:nowrap!important;
+  touch-action:pan-x!important;
+  -webkit-overflow-scrolling:touch!important;
+  scrollbar-width:none!important;
+  cursor:grab;
+}
+.categoryPills::-webkit-scrollbar,.catPills::-webkit-scrollbar,
+.categories-scroll::-webkit-scrollbar,.scrollCategories::-webkit-scrollbar{display:none!important}
+.categoryPills .catPill,.catPills .catPill,
+.categories-scroll .catPill,.scrollCategories .catPill{
+  flex:0 0 auto!important;
+}
+.scrollCategories.dragging{cursor:grabbing!important}
+</style>
 </head>
 <body>
 <header class="top">
@@ -208,8 +295,17 @@ h2{font-size:18px;margin:22px 0 12px}
 <button class="catPill" onclick="renderCategory('Personal Care',this)">🧴 Personal Care</button>
 <button class="catPill" onclick="renderCategory('Home',this)">🏠 Home</button>
 <button class="catPill" onclick="renderCategory('Baby',this)">👶 Baby</button>
+<button class="catPill" onclick="renderCategory('Rice',this)">🍚 Rice</button>
+<button class="catPill" onclick="renderCategory('Drinks',this)">🥤 Drinks</button>
+<button class="catPill" onclick="renderCategory('Snacks',this)">🍿 Snacks</button>
+<button class="catPill" onclick="renderCategory('Personal Care',this)">🧴 Personal Care</button>
+<button class="catPill" onclick="renderCategory('Cleaning',this)">🧹 Cleaning</button>
+<button class="catPill" onclick="renderCategory('Household',this)">🏠 Household</button>
+<button class="catPill" onclick="renderCategory('Baby',this)">👶 Baby</button>
+<button class="catPill discountPill" onclick="renderCategory('Discount',this)">🏷️ Discount</button>
 </div>
 <div class="catProductsTitle"><h3 id="catTitle">All Products</h3><span id="catCount"></span></div>
+<div id="discountHint" class="discountHint">🏷️ Discount items are shown here when available.</div>
 <div class="products" id="categoryProducts"></div>
 </section>
 
@@ -249,33 +345,35 @@ h2{font-size:18px;margin:22px 0 12px}
 
 <section id="promotion" class="page">
 <button class="back" onclick="openPage('home')">← Home</button>
-<div class="promoHero"><div><span class="eyebrow">LIMITED TIME</span><h1>🔥 Promotions & Discounts</h1><p>Special prices on selected LY JING MART items.</p></div><div class="promoBadge">SALE</div></div>
-<div class="promoTitle"><div><h2>💖 Discount Items</h2><p>Grab your favorites before the offer ends.</p></div></div>
-<div class="products" id="discountProducts"></div>
-<div class="promoNote"><div class="promoNoteIcon">🎁</div><div><b>More promotions coming</b><p>New discount items can be added anytime.</p></div><button onclick="openPage('contact')">Ask Us</button></div>
+<div class="promoHero"><div><span class="eyebrow">LY JING MART</span><h1>📢 Promotion</h1><p>Latest promotions, special announcements and upcoming offers.</p></div><div class="promoBadge">INFO</div></div>
+<div class="promoNote"><div class="promoNoteIcon">🎁</div><div><b>Special offers coming soon</b><p>Discounted products will appear directly in Categories.</p></div></div>
+<div class="promoNote"><div class="promoNoteIcon">📣</div><div><b>Want to know about a promotion?</b><p>Contact LY JING MART for the latest offer.</p></div><button onclick="openPage('contact')">Contact</button></div>
 </section>
 </main>
 
 <nav class="bottom">
 <button class="nav active" onclick="openPage('home',this)"><b>⌂</b>Home</button>
 <button class="nav" onclick="openPage('categories',this)"><b>▦</b>Categories</button>
-<button class="nav" onclick="openPage('cart',this)"><b>🛒</b>Cart</button>
+<button class="nav" onclick="openPage('cart',this)"><b class="cart-nav-icon">🛒<span id="cartCountBadge" class="cart-count-badge">0</span></b>Cart</button>
 <button class="nav" onclick="openPage('promotion',this)"><b>🏷️</b>Promotion</button>
 <button class="nav" onclick="openPage('contact',this)"><b>☎</b>Contact</button>
 </nav>
 
 <div id="productModal" class="modal" onclick="if(event.target===this)closeModal()"><div class="sheet"><button class="close" onclick="closeModal()">✕</button><div id="detail"></div></div></div>
 
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js">
+document.addEventListener('DOMContentLoaded',updateCartBadge);
+window.addEventListener('storage',updateCartBadge);
+</script>
 <script>
 const ORDER_API_URL="https://script.google.com/macros/s/AKfycbyvey9j8mb8KUBgoHJe45c79hZ3rMw8WuVKlLzuhkUPYgb3X8jUWDyc3H6o5HYNDtVk/exec";
 const tg=window.Telegram?.WebApp||null;
 if(tg){tg.ready();tg.expand();}
 const TELEGRAM_INIT_DATA=tg?tg.initData:"";
 const products=[
-{id:1,name:"MAMA Noodle",price:1,cat:"Food",img:"mama.png",e:"🍜",stock:20},
+{id:1,name:"MAMA Noodle",price:1,cat:"Food",img:"mama.png",e:"🍜",stock:20,discount:true},
 {id:2,name:"Indomie Noodles 80g",price:.85,cat:"Food",img:"indomie.png",e:"🍜",stock:20},
-{id:3,name:"Lay's Chips 50g",price:1,cat:"Snacks",img:"lays.png",e:"🥔",stock:15},
+{id:3,name:"Lay's Chips 50g",price:1,cat:"Snacks",img:"lays.png",e:"🥔",stock:15,discount:true},
 {id:4,name:"Coca Cola 1.25L",price:1.2,cat:"Drinks",img:"coke.png",e:"🥤",stock:15},
 {id:5,name:"Colgate",price:2.5,cat:"Personal Care",img:"colgate.png",e:"🪥",stock:10},
 {id:6,name:"Drinking Water",price:.5,cat:"Drinks",img:"water.png",e:"💧",stock:30}
@@ -283,22 +381,32 @@ const products=[
 let cart=JSON.parse(localStorage.getItem("lyjing_cart")||"[]");
 let method="Delivery";
 
-function save(){localStorage.setItem("lyjing_cart",JSON.stringify(cart));updateCount()}
+
+function updateCartBadge(){
+  var badge=document.getElementById('cartCountBadge');
+  var total=(typeof cart!=='undefined' && Array.isArray(cart))
+    ? cart.reduce(function(n,item){return n+(Number(item.qty)||0)},0) : 0;
+  if(badge){
+    badge.textContent=total;
+    badge.style.display=total>0?'inline-flex':'none';
+  }
+  var top=document.getElementById('count');
+  if(top) top.textContent=total;
+}
+function save(){localStorage.setItem("lyjing_cart",JSON.stringify(cart));updateCount();updateCartBadge()}
 function updateCount(){count.textContent=cart.reduce((s,x)=>s+x.qty,0)}
-function card(p){return `<div class="card" onclick="openDetail(${p.id})"><div class="photo"><img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'"></div><div class="name">${p.name}</div><div class="price">$${p.price.toFixed(2)}</div><div class="stock">${p.stock} in stock</div><button class="add" onclick="event.stopPropagation();add(${p.id})">Add to Cart</button></div>`}
+function card(p){return `<div class="card" onclick="openDetail(${p.id})"><div class="photo"><img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'">${p.discount?'<span class="saleTag">DISCOUNT</span>':''}</div><div class="name">${p.name}</div><div class="price">$${p.price.toFixed(2)}</div><div class="stock">${p.stock} in stock</div><button class="add" onclick="event.stopPropagation();add(${p.id})">Add to Cart</button></div>`}
 function render(a=products){
   productsBox.innerHTML=a.map(card).join("");
   featured.innerHTML=a.slice(0,4).map(card).join("");
-  const dp=document.getElementById("discountProducts");
-  if(dp) dp.innerHTML=products.slice(0,4).map((p,i)=>{const off=["SPECIAL","10% OFF","HOT DEAL","SAVE"][i];return `<div class="card"><div class="photo"><img src="${p.img}" onerror="this.outerHTML='<div class=emoji>${p.e}</div>'"><span class="saleTag">${off}</span></div><div class="name">${p.name}</div><div class="price">$${p.price.toFixed(2)}</div><div class="stock">Promotion price</div><button class="add" onclick="add(${p.id})">Add to Cart</button></div>`}).join("");
 }
 function renderCategory(cat,btn){
   document.querySelectorAll('.catPill').forEach(x=>x.classList.remove('active'));
   if(btn) btn.classList.add('active');
-  const filtered=cat==='All'?products:products.filter(p=>p.cat===cat);
+  const filtered=cat==='All'?products:(cat==='Discount'?products.filter(p=>p.discount):products.filter(p=>p.cat===cat));
   document.getElementById('catTitle').textContent=cat==='All'?'All Products':cat;
   document.getElementById('catCount').textContent=filtered.length+' items';
-  document.getElementById('categoryProducts').innerHTML=filtered.map(card).join('');
+  document.getElementById('categoryProducts').innerHTML=filtered.map(card).join('');document.getElementById('discountHint').style.display=cat==='Discount'?'block':'none';
 }
 function filterCategory(cat){
   openPage('categories');
@@ -368,5 +476,52 @@ const productsBox=document.getElementById("products"),featured=document.getEleme
 document.getElementById("search").oninput=e=>{let q=e.target.value.toLowerCase();render(products.filter(p=>(p.name+" "+p.cat).toLowerCase().includes(q)))};
 province.onchange=renderCheckout;
 render();updateCount();
+
+document.addEventListener('DOMContentLoaded',updateCartBadge);
+window.addEventListener('storage',updateCartBadge);
+</script>
+
+<script id="category-drag-fix">
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('.categoryPills,.catPills,.categories-scroll,.scrollCategories').forEach(function(el){
+    if(el.dataset.dragReady) return;
+    el.dataset.dragReady='1';
+
+    var down=false, startX=0, startScroll=0;
+
+    el.addEventListener('pointerdown', function(e){
+      down=true;
+      startX=e.clientX;
+      startScroll=el.scrollLeft;
+      el.classList.add('dragging');
+      try{el.setPointerCapture(e.pointerId)}catch(_){}
+    });
+
+    el.addEventListener('pointermove', function(e){
+      if(!down) return;
+      var dx=e.clientX-startX;
+      if(Math.abs(dx)>2) el.scrollLeft=startScroll-dx;
+    });
+
+    function stop(e){
+      down=false;
+      el.classList.remove('dragging');
+      try{if(e.pointerId!==undefined) el.releasePointerCapture(e.pointerId)}catch(_){}
+    }
+    el.addEventListener('pointerup',stop);
+    el.addEventListener('pointercancel',stop);
+    el.addEventListener('pointerleave',function(e){
+      if(e.pointerType==='mouse') stop(e);
+    });
+
+    // Shift-wheel / trackpad support.
+    el.addEventListener('wheel',function(e){
+      if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){
+        el.scrollLeft += e.deltaY;
+        e.preventDefault();
+      }
+    },{passive:false});
+  });
+});
 </script>
 </body></html>
