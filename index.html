@@ -385,14 +385,20 @@ const productModal=document.getElementById("productModal");
 const detail=document.getElementById("detail");
 const orderNumber=document.getElementById("orderNumber");
 
-const products=[
-{id:1,name:"MAMA Noodle",price:1,cat:"Food",img:"mama.png",e:"🍜",stock:20,discount:true},
-{id:2,name:"Indomie Noodles 80g",price:.85,cat:"Food",img:"indomie.png",e:"🍜",stock:20},
-{id:3,name:"Lay's Chips 50g",price:1,cat:"Snacks",img:"lays.png",e:"🥔",stock:15,discount:true},
-{id:4,name:"Coca Cola 1.25L",price:1.2,cat:"Drinks",img:"coke.png",e:"🥤",stock:15},
-{id:5,name:"Colgate",price:2.5,cat:"Personal Care",img:"colgate.png",e:"🪥",stock:10},
-{id:6,name:"Drinking Water",price:.5,cat:"Drinks",img:"water.png",e:"💧",stock:30}
-];
+let products=[];
+
+async function loadProducts(){
+  const data=await fetch("products.json").then(r=>r.json());
+  products=data.map(p=>({
+    id:p.id,
+    name:p.name,
+    price:p.price,
+    cat:p.category,
+    img:p.photo || "",
+    e:p.emoji || "🛍️",
+    stock:p.stock
+  }));
+}
 let cart=JSON.parse(localStorage.getItem("lyjing_cart")||"[]");
 let method="Delivery";
 
